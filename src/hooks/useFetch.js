@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useFetch = (url) => {
   const [state, setState] = useState({
@@ -21,6 +21,9 @@ export const useFetch = (url) => {
       throw new Error();
     }
   };
+  useEffect(()=>{
+    getFetch()
+  },[url])
   const { data, loading, hasError } = state;
   return { data, loading, hasError };
 };
